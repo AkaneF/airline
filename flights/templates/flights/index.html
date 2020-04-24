@@ -6,12 +6,20 @@
 
 {% block body %}
     <h1>Flights</h1>
+    <ul>
+      {% for flight in flights %}
+      <li>
+        {{flight}}
+      </li>
+      {% endfor%}
 
-    {% for flight in flights %}
+    <!-- <ul>
+    {% for item in flight %}
         <li>
-            <a href="{% url 'flight' flight.id %}">
-                Flight #{{ flight.id }}: {{ flight.origin }} to {{ flight.destination }}
+            <a href="{% url 'flight' item.id %}">
+                Flight #{{ item.id }}: {{ item.origin }} to {{ item.destination }}
             </a>
         </li>
-    {% endfor %}
+    </ul>
+    {% endfor %} -->
 {% endblock %}
