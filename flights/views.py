@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import Flight
+from .models import Flight, Passenger
 
 # Create your views here.
 def index(request):
@@ -18,7 +18,8 @@ def flight(request, flight_id):
     except Flight.DoesNotExist:
         raise Http404("Flight does not exist.")
     context = {
-        "flight": flight
+        "flight": flight,
+        "passengers": flight.passengers.all()
     }
     return render(request, "flights/flight.html", context)
 
